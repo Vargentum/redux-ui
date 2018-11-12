@@ -1,5 +1,5 @@
 {
-  "name": "redux-ui",
+  "name": "@vargentum/redux-ui",
   "version": "0.1.1",
   "description": "UI state management for Redux and React",
   "main": "transpiled/index.js",
