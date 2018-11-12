@@ -27,7 +27,9 @@ export const defaultState = new Map({
   })
 });
 
-export default function reducer(state = defaultState, action) {
+export default function reducer(_state = defaultState, action) {
+  const state = Map.isMap(_state) ? _state : new Map(_state)
+
   let key = action.payload && (action.payload.key || []);
 
   if (!Array.isArray(key)) {
