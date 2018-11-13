@@ -1,6 +1,6 @@
 'use strict';
 
-import { Map } from 'immutable';
+import { Map, fromJS } from 'immutable';
 import invariant from 'invariant'
 
 // For updating multiple UI variables at once.  Each variable might be part of
@@ -28,7 +28,7 @@ export const defaultState = new Map({
 });
 
 export default function reducer(_state = defaultState, action) {
-  let state = Map.isMap(_state) ? _state : new Map(_state)
+  let state = Map.isMap(_state) ? _state : fromJS(_state)
 
   let key = action.payload && (action.payload.key || []);
 
