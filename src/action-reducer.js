@@ -27,9 +27,7 @@ export const defaultState = new Map({
   })
 });
 
-export default function reducer(_state = defaultState, action) {
-  let state = Map.isMap(_state) ? _state : fromJS(_state)
-
+export default function reducer(state = defaultState, action) {
   let key = action.payload && (action.payload.key || []);
 
   if (!Array.isArray(key)) {
@@ -121,7 +119,7 @@ export default function reducer(_state = defaultState, action) {
         //       Though why wouldn't you just add a custom reducer to the
         //       top-level component?
         const { path, func } = r;
-        const newState = func(mut.getIn(path), action);
+        const newState = func ? func(mut.getIn(path), action) : mut.getIn(path);
         if (newState === undefined) {
           throw new Error(`Your custom UI reducer at path ${path.join('.')} must return some state`);
         }
